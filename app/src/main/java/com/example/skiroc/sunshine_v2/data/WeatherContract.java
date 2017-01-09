@@ -45,7 +45,6 @@ public class WeatherContract {
     public static final String PATH_WEATHER = "weather";
     public static final String PATH_LOCATION = "location";
 
-
     // To make it easy to query for the exact date, we normalize all dates that go into
     // the database to the start of the the Julian day at UTC.
     public static long normalizeDate(long startDate) {
@@ -56,6 +55,7 @@ public class WeatherContract {
         return time.setJulianDay(julianDay);
     }
 
+    /* Inner class that defines the table contents of the location table */
     public static final class LocationEntry implements BaseColumns {
 
         public static final Uri CONTENT_URI =
@@ -66,13 +66,15 @@ public class WeatherContract {
         public static final String CONTENT_ITEM_TYPE =
                 ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_LOCATION;
 
+        // Table name
         public static final String TABLE_NAME = "location";
 
         // The location setting string is what will be sent to openweathermap
         // as the location query.
         public static final String COLUMN_LOCATION_SETTING = "location_setting";
 
-        // Human readable location string, provided by the API.
+        // Human readable location string, provided by the API.  Because for styling,
+        // "Mountain View" is more recognizable than 94043.
         public static final String COLUMN_CITY_NAME = "city_name";
 
         // In order to uniquely pinpoint the location on the map when we launch the
@@ -83,7 +85,6 @@ public class WeatherContract {
         public static Uri buildLocationUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
-
     }
 
     /* Inner class that defines the table contents of the weather table */
@@ -130,6 +131,9 @@ public class WeatherContract {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
+        /*
+            Student: This is the buildWeatherLocation function you filled in.
+         */
         public static Uri buildWeatherLocation(String locationSetting) {
             return CONTENT_URI.buildUpon().appendPath(locationSetting).build();
         }
@@ -163,3 +167,4 @@ public class WeatherContract {
         }
     }
 }
+

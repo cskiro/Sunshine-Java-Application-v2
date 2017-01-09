@@ -389,7 +389,7 @@ public class TestProvider extends AndroidTestCase {
     }
 
     // Make sure we can still delete after adding/updating stuff
-    public void testDeleteRecords() {
+            public void testDeleteRecords() {
         testInsertReadProvider();
 
         // Register a content observer for our location delete.

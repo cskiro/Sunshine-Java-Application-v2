@@ -17,6 +17,7 @@ package com.example.skiroc.sunshine_v2.utils;
  *
  * Note: This file copied from the Android CTS Tests
  */
+
 import junit.framework.Assert;
 
 import java.util.concurrent.Callable;
@@ -71,3 +72,4 @@ public abstract class PollingCheck {
         Assert.fail(message.toString());
     }
 }
+

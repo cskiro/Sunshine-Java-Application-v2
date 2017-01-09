@@ -1,6 +1,5 @@
 package com.example.skiroc.sunshine_v2.data;
 
-
 /*
  * Copyright (C) 2014 The Android Open Source Project
  *
@@ -20,12 +19,19 @@ package com.example.skiroc.sunshine_v2.data;
 import android.net.Uri;
 import android.test.AndroidTestCase;
 
+/*
+    Students: This is NOT a complete test for the WeatherContract --- just for the functions
+    that we expect you to write.
+ */
 public class TestWeatherContract extends AndroidTestCase {
 
     // intentionally includes a slash to make sure Uri is getting quoted correctly
     private static final String TEST_WEATHER_LOCATION = "/North Pole";
     private static final long TEST_WEATHER_DATE = 1419033600L;  // December 20th, 2014
 
+    /*
+        Students: Uncomment this out to test your weather location function.
+     */
     public void testBuildWeatherLocation() {
         Uri locationUri = WeatherContract.WeatherEntry.buildWeatherLocation(TEST_WEATHER_LOCATION);
         assertNotNull("Error: Null Uri returned.  You must fill-in buildWeatherLocation in " +
@@ -38,3 +44,4 @@ public class TestWeatherContract extends AndroidTestCase {
                 "content://com.example.android.sunshine.app/weather/%2FNorth%20Pole");
     }
 }
+
